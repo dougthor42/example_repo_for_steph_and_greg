@@ -203,9 +203,9 @@ def find_marked_pixels(image_array: np.ndarray) -> Tuple[int, Any, Any]:
 
             # We don't care about non-marked pixels
             if not pixel_is_marked:
-                logger.debug(f"Pixel {coord} is not marked, skipping.")
+                logger.trace(f"Pixel {coord} is not marked, skipping.")
                 continue
-            logger.debug(f"Marked pixel {coord} found. Checking neighbors")
+            logger.trace(f"Marked pixel {coord} found. Checking neighbors")
 
             # the current pixel is marked. Look at the neighbors
             # TODO: refactor - we're too nested
@@ -218,10 +218,10 @@ def find_marked_pixels(image_array: np.ndarray) -> Tuple[int, Any, Any]:
                 neighbor_coord = (row_coord + rel_index[0], col_coord + rel_index[1])
                 if out_of_bounds(is_marked, neighbor_coord):
                     neighbor = False
-                    logger.debug(f"  The neighbor {neighbor_coord} is out of bounds.")
+                    logger.trace(f"  The neighbor {neighbor_coord} is out of bounds.")
                 else:
                     neighbor = is_marked[neighbor_coord[0], neighbor_coord[1]]
-                logger.debug(f"  Neighbor {neighbor_coord} marked: {neighbor}")
+                logger.trace(f"  Neighbor {neighbor_coord} marked: {neighbor}")
                 neighbors.append(neighbor)
 
             # Any neighbors are marked? Then this pixel is not considered
