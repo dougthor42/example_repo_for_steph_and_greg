@@ -3,7 +3,6 @@
 FLIR Python Evaluation, test 2
 """
 from pathlib import Path
-from typing import Any
 from typing import List
 from typing import Tuple
 
@@ -146,7 +145,9 @@ def load_image_file(path: Path) -> np.ndarray:
 
 # This function name, arg name, and return values are defined by the
 # program requirements.
-def find_marked_pixels(image_array: np.ndarray) -> Tuple[int, Any, Any]:
+def find_marked_pixels(
+    image_array: np.ndarray,
+) -> Tuple[int, List[CoordType], List[List[CoordType]]]:
     """
     Determine various pixel information from image data.
 
