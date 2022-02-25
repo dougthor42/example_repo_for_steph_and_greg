@@ -143,7 +143,7 @@ def test_find_marked_pixels(image_data, want_marked, want_isolated, want_cluster
 @pytest.mark.parametrize(
     "image_data, want", [(EXAMPLE_IMAGE, [110, 189, 223, 231, 231, 219, 189, 126])]
 )
-def test_encode_pixel_map(image_data, want, want_str):
+def test_encode_pixel_map(image_data, want):
     got = flir.encode_pixel_map(image_data)
     assert got == want
 
