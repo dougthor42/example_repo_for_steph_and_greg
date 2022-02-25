@@ -8,6 +8,30 @@ The second technical test from Teledyne FLIR
 Requires Python 3.8.
 
 
+### Installation
+
+Please follow the [Development](#development) instructions, below.
+
+In the future, this project might be available on our local PyPI server or
+might be distributed as a frozen EXE.
+
+
+### Usage
+
+A CLI entry point exists for this project. In a linux shell with the activated
+virtual environment, run `flir`:
+
+```
+$ flir
+Usage: flir [OPTIONS] FILENAME
+Try 'flir --help' for help.
+
+Error: Missing argument 'FILENAME'.
+```
+
+You can run `flir --help` to get additional information.
+
+
 ## Development
 
 1.  Clone the repo: `git clone `
