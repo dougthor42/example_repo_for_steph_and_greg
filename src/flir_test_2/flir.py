@@ -17,7 +17,7 @@ from flir_test_2.custom_types import CoordType
 
 def out_of_bounds(array: np.ndarray, coord: CoordType) -> bool:
     """
-    Check if a coordinate is out of bounds of an array.
+    Check if a coordinate is out of bounds of an array, returning True if OOB.
     """
     row_coord, col_coord = coord
     num_rows, num_cols = array.shape
