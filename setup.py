@@ -15,6 +15,8 @@ about_file = Path.cwd() / "src" / "flir_test_2" / "__about__.py"
 with open(about_file) as openf:
     exec(openf.read(), about)
 
+ENTRY_POINTS = {"console_scripts": ["flir = flir_test_2.cli:main"]}
+
 INSTALL_REQUIRES: List[str] = []
 CLASSIFIERS: List[str] = []
 
@@ -30,6 +32,7 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     include_package_data=False,
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     install_requires=INSTALL_REQUIRES,
+    entry_points=ENTRY_POINTS,
 )
