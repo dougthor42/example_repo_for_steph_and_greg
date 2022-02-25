@@ -287,7 +287,47 @@ def encode_pixel_map(image_array: np.ndarray) -> List[int]:
 
 
 def example():
-    pass
+    """
+    Run an example image and print results.
+
+    This function highlights how to use the API.
+
+    This was taken from ``flir_test_skeleton.py``.
+    """
+    test_image = np.array(
+        [
+            [0, 1, 1, 0, 1, 1, 1, 0],
+            [1, 0, 1, 1, 1, 1, 0, 1],
+            [1, 1, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 1, 1, 1],
+            [1, 1, 0, 1, 1, 0, 1, 1],
+            [1, 0, 1, 1, 1, 1, 0, 1],
+            [0, 1, 1, 1, 1, 1, 1, 0],
+        ],
+        dtype=np.uint32,
+    )
+
+    num_marked_pixels, isolated_pixels, cluster_info = find_marked_pixels(test_image)
+    print(
+        "Found {} marked pixels, where {} are isolated.".format(
+            num_marked_pixels, isolated_pixels
+        )
+    )
+    # expected 16 total pixels, where (0, 3) is isolated
+    print("Cluster info: {}".format(cluster_info))
+    # expected two clusters:
+    #  first  -- (0, 0), (1, 1), (2, 2), (3, 3), (3, 4), (4, 3), (4, 4),
+    #            (5, 2), (5, 5), (6, 1), (6, 6), (7, 0), (7, 7)
+    #  second -- (0, 7), (1, 6)
+
+    bit_per_pixel_map = encode_pixel_map(test_image)
+    print(
+        "pixel map (bytes): {}".format(
+            " ".join(["{:02X}".format(byte_val) for byte_val in bit_per_pixel_map])
+        )
+    )
+    # expected output: "67 DB BF 7E 7E BD E7"   # Actually wrong
 
 
 if __name__ == "__main__":
