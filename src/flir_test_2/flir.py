@@ -244,7 +244,7 @@ def find_marked_pixels(image_array: np.ndarray) -> Tuple[int, Any, Any]:
                 isolated.append(coord)
 
     logger.info(f"Found {len(isolated)} isolated marked pixels.")
-    logger.info(f"Found {len(clusters)} clusters of marked pixels.")
+    logger.info(f"Found {len(clusters)} marked pixels belonging to clusters.")
 
     # At this point we have a list of isolated pixels and a list of pixels
     # belonging to any number of clusters. We now have to split that cluster
