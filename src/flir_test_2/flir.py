@@ -11,7 +11,22 @@ import numpy as np
 
 
 def load_image_file(path: Path) -> np.ndarray:
-    pass
+    """
+    Load a image file into a numpy array.
+
+    Parameters
+    ----------
+    path :
+        The path to the file.
+
+    Returns
+    -------
+    image_data
+        A 2D numpy array of image data.
+    """
+    image = imageio.imread(path)
+    image_data = np.array(image)
+    return image_data
 
 
 # This function name, arg name, and return values are defined by the program requirements.
