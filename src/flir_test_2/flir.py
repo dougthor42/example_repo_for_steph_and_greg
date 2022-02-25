@@ -79,6 +79,18 @@ def split_clusters(cluster_data: List[CoordType]) -> List[List[CoordType]]:
     in the input data, we look for any other coord that is neighboring that
     coord. If no neighbors are found, that point is removed and set aside in
     a separate list.
+
+    Parameters
+    ----------
+    cluster_data :
+        This is a list of (row, column) tuples containing all of the pixels
+        that belong to any cluster of pixels.
+
+    Returns
+    -------
+    clusters :
+        A list of lists. Eg: ``[cluster1, cluster2, cluster3]``, where
+        ``cluster1`` is ``[(r1, c1), (r2, c2), ...]``, etc.
     """
     logger.info("Splitting out clusters.")
 
