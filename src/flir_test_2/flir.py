@@ -169,9 +169,6 @@ def find_marked_pixels(image_array: np.ndarray) -> Tuple[int, Any, Any]:
         such that the largest cluster is first in the list and the smallest
         cluster is last.
     """
-    # TODO: Remove this line when done.
-    num_marked_pixels = isolated_pixels = cluster_info = None
-
     # We only care about if things are zero or not, so we can convert the
     # array to boolean
     # True: pixel is "marked". False: pixel is normal
@@ -276,9 +273,6 @@ def encode_pixel_map(image_array: np.ndarray) -> List[int]:
         A list of integers that represent the image. The list has a length
         equal to the image width * image height / 8.
     """
-    # TODO: Remove this line when done.
-    bit_per_pixel_map = None
-
     # image_array should be provided unprocessed, so we have to convert it
     # to "marked/normal" bits
     is_normal = (image_array != 0).astype(int)
