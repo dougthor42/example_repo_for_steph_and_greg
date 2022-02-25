@@ -10,6 +10,7 @@ from typing import Tuple
 import imageio
 import numpy as np
 from loguru import logger
+from more_itertools import chunked
 
 from flir_test_2.custom_types import CoordType
 
@@ -244,9 +245,45 @@ def find_marked_pixels(image_array: np.ndarray) -> Tuple[int, Any, Any]:
     return num_marked_pixels, isolated_pixels, cluster_info
 
 
-# This function name, arg name, and return values are defined by the program requirements.
-def encode_pixel_map(image_array):
-    pass
+# This function name, arg name, and return values are defined by the
+# program requirements.
+def encode_pixel_map(image_array: np.ndarray) -> List[int]:
+    """
+    Create a compressed map of marked/normal pixels.
+
+    Given image data consisting of integers, a "marked" pixel is any pixel
+    that has a value of exactly 0. All other pixels are considered "normal".
+
+    Parameters
+    ----------
+    image_array :
+
+    Returns
+    -------
+    bit_per_pixel_map :
+        A list of integers that represent the image. The list has a length
+        equal to the image width * image height / 8.
+    """
+    # TODO: Remove this line when done.
+    bit_per_pixel_map = None
+
+    # image_array should be provided unprocessed, so we have to convert it
+    # to "marked/normal" bits
+    is_normal = (image_array != 0).astype(int)
+
+    # Reshape it into a 1D array and convert to a standard list
+    flat = list(is_normal.reshape(is_normal.size))
+
+    chunks = chunked(flat, 8)
+
+    bit_per_pixel_map = []
+    for chunk in chunks:
+        # Convert to a string of binary, eg "01101110100"
+        binary_repr = "".join(map(str, chunk))
+        int_repr = int(binary_repr, 2)
+        bit_per_pixel_map.append(int_repr)
+
+    return bit_per_pixel_map
 
 
 def example():
