@@ -94,6 +94,16 @@ def split_clusters(cluster_data: List[CoordType]) -> List[List[CoordType]]:
     """
     logger.info("Splitting out clusters.")
 
+    # No time to finish this fuction.
+    # One way to accomplish this would be recursively. Start off with the first
+    # point in your list. Find all points that neighbor it. For each neighboring
+    # point, find the neighbors of *those*. Repeat until you've exhausted all
+    # points.
+    # Remove any used points from your data.
+    # Move on to the next, still-existing point in cluster_data and repeat.
+    # You should end up with multiple arrays of clusters, which you can
+    # then just sort by length of array.
+
     # WIP
     return [
         [
